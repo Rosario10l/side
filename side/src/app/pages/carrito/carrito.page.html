@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Carrito</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let f of carrito">
+    <ion-avatar class="ion-margin-end" >
+      <img [src]="f.strMealThumb" alt="">
+    </ion-avatar>
+    <ion-label>{{ f.strMeal }}</ion-label>
+    <ion-label> {{ convertPrice(f.idMeal) | currency }}</ion-label>
+
+    <ion-row class="botones-row">
+      <ion-col>
+        <ion-button  color="success" size="small" (click)="incrementar(f)">+</ion-button>
+      </ion-col>
+      <ion-col class="cantidad-col">
+        <ion-label class="cantidad">{{ f.cantidad }}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-button  color="danger" size="small" (click)="decrementar(f)">-</ion-button>
+      </ion-col>
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+      <ion-label><p>Total:</p>{{ f.total | currency }}</ion-label>
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+      <ion-col>
+        <!-- Nuevo botón para eliminar el producto -->
+        <ion-button  color="warning" size="small" (click)="eliminarProducto(f)">Eliminar</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-item>
+
+
+</ion-content>

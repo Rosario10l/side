@@ -1,0 +1,13 @@
+<ion-card>
+  <img class="img_movie" [src]="food.strMealThumb">
+  <ion-card-header class="card_movie">
+    <ion-toolbar>
+      <ion-card-title class="title_movie">{{ food.strMeal }}</ion-card-title>
+      <ion-card-subtitle> {{ convertPrice(food.idMeal)  | currency}}</ion-card-subtitle>
+
+      <ion-button (click)="addToCart(food)" color="success">+</ion-button>
+      <ion-icon slot="icon-only"></ion-icon>
+    </ion-toolbar>
+  </ion-card-header>
+</ion-card>
+

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ingredientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-row *ngIf="!load">
+      <ion-col size="2" offset="5"></ion-col>
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-row>
+    <ion-row >
+      <ion-col size="12">
+        <ion-select (ionChange)="selectIngredientes($event)" fill="outline" justify="space-between" label="Ingredientes"
+        interface="popover" value="Salmon" placeholder="Select Area">
+            <ion-select-option *ngFor="let cat of myIngredient"
+             [value]="cat.strArea">{{cat.strIngredient}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="load">
+      <ion-col size-Xs="12" sizeSm="6" sizeMd="4" sizeLg="3" class="ion-no-padding"  *ngFor="let f of comida" >
+        <app-food-card [food]="f"></app-food-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
